@@ -1,6 +1,5 @@
 package forestry.core.gui;
 
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.resources.ResourceLocation;
 
 import com.mojang.blaze3d.systems.RenderSystem;

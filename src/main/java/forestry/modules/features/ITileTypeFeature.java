@@ -3,9 +3,8 @@ package forestry.modules.features;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import forestry.api.core.ITileTypeProvider;
 
@@ -20,7 +19,7 @@ public interface ITileTypeFeature<T extends BlockEntity> extends IModFeature, IT
 
 	@Override
 	@SuppressWarnings("unchecked")
-	default <R extends IForgeRegistryEntry<R>> void register(RegistryEvent.Register<R> event) {
+	default <R extends IForgeRegistry<R>> void register(RegisterEvent.RegisterHelper<R> event) {
 		IForgeRegistry<R> registry = event.getRegistry();
 		Class<R> superType = registry.getRegistrySuperType();
 		if (BlockEntityType.class.isAssignableFrom(superType) && hasTileType()) {

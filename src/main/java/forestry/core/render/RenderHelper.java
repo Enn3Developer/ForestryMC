@@ -11,12 +11,14 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.resources.ResourceLocation;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import net.minecraftforge.common.util.TransformationHelper;
 import net.minecraft.world.level.Level;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class RenderHelper {
 	public static final Vector3f ORIGIN = new Vector3f(0.0F, 0.0F, 0.0F);
@@ -75,7 +77,7 @@ public class RenderHelper {
 		this.baseRotation = baseRotation;
 	}
 
-	public void rotate(Quaternion rotation) {
+	public void rotate(Quaternionf rotation) {
 		transformation.mulPose(rotation);
 	}
 

@@ -4,9 +4,8 @@ import java.util.function.Supplier;
 
 import net.minecraft.world.item.Item;
 
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import forestry.api.core.IItemProvider;
 import forestry.core.proxy.Proxies;
@@ -38,8 +37,8 @@ public interface IItemFeature<I extends Item> extends IModFeature, IItemProvider
 	}
 
 	@SuppressWarnings("unchecked")
-	default <T extends IForgeRegistryEntry<T>> void register(RegistryEvent.Register<T> event) {
-		IForgeRegistry<T> registry = event.getRegistry();
+	default <T extends IForgeRegistryEntry<T>> void register(RegisterEvent.register<T> event) {
+		IForgeRegistry<T> registry = event.getForgeRegistry();
 		Class<T> superType = registry.getRegistrySuperType();
 		if (Item.class.isAssignableFrom(superType) && hasItem()) {
 			registry.register((T) item());

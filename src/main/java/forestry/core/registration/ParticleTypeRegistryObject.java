@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraftforge.registries.IForgeRegistry;
 
 import net.minecraftforge.registries.RegistryObject;
 

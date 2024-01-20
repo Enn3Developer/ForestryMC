@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Items;
@@ -49,7 +49,7 @@ import forestry.modules.features.IModFeature;
 /**
  * Data generator class that generates the block drop loot tables for forestry blocks.
  */
-public class ForestryBlockLootTables extends BlockLoot {
+public class ForestryBlockLootTables extends BlockLootSubProvider {
 
 	@Override
 	public void accept(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {

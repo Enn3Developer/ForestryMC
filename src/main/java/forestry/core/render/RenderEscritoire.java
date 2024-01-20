@@ -12,7 +12,7 @@ package forestry.core.render;
 
 import javax.annotation.Nullable;
 
-import com.mojang.math.Vector3f;
+import org.joml.Vector3f;
 
 import forestry.core.blocks.BlockBase;
 import forestry.core.config.Constants;

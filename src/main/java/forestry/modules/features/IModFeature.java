@@ -3,8 +3,8 @@ package forestry.modules.features;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.registries.IForgeRegistryEntry;
+import net.minecraftforge.registries.RegisterEvent;
+import net.minecraftforge.registries.IForgeRegistry;
 
 /**
  * A feature can be used to provide an game object like a block, an item or an fluid. There are different implementations
@@ -29,7 +29,7 @@ public interface IModFeature {
 
 	void create();
 
-	default <T extends IForgeRegistryEntry<T>> void register(RegistryEvent.Register<T> event) {
+	default <T extends IForgeRegistry<T>> void register(RegisterEvent.Register<T> event) {
 	}
 
 	@OnlyIn(Dist.CLIENT)

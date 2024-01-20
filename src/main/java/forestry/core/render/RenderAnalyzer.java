@@ -26,7 +26,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-import com.mojang.math.Vector3f;
+import org.joml.Vector3f;
 
 import forestry.core.blocks.BlockBase;
 import forestry.core.config.Constants;

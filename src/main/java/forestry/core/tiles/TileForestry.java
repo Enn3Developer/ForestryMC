@@ -19,7 +19,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.WorldlyContainer;
@@ -33,8 +32,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
@@ -312,7 +311,7 @@ public abstract class TileForestry extends BlockEntity implements IStreamable, I
 
 	@Override
 	public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+		if (capability == ForgeCapabilities.ITEM_HANDLER) {
 			if (facing != null) {
 				return LazyOptional.of(() -> new SidedInvWrapper(getInternalInventory(), facing)).cast();
 			} else {
@@ -325,6 +324,6 @@ public abstract class TileForestry extends BlockEntity implements IStreamable, I
 
 	@Override
 	public Component getDisplayName() {
-		return new TranslatableComponent(this.getUnlocalizedTitle());
+		return Component.translatable(this.getUnlocalizedTitle());
 	}
 }

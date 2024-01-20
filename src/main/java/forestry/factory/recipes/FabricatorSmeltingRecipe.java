@@ -20,7 +20,7 @@ import net.minecraft.util.GsonHelper;
 import net.minecraft.resources.ResourceLocation;
 
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.registries.ForgeRegistryEntry;
+import net.minecraftforge.registries.ForgeRegistry;
 
 import forestry.api.recipes.IFabricatorSmeltingRecipe;
 
@@ -63,7 +63,7 @@ public class FabricatorSmeltingRecipe implements IFabricatorSmeltingRecipe {
 		return id;
 	}
 
-	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<FabricatorSmeltingRecipe> {
+	public static class Serializer extends ForgeRegistry<RecipeSerializer<?>> implements RecipeSerializer<FabricatorSmeltingRecipe> {
 
 		@Override
 		public FabricatorSmeltingRecipe fromJson(ResourceLocation recipeId, JsonObject json) {

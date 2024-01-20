@@ -7,7 +7,7 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
-import net.minecraftforge.registries.IForgeRegistryEntry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public enum FeatureType {
 	MACHINE(Block.class),
@@ -18,9 +18,9 @@ public enum FeatureType {
 	TILE(BlockEntityType.class),
 	CONTAINER(MenuType.class);
 
-	public final Class<? extends IForgeRegistryEntry> superType;
+	public final Class<? extends IForgeRegistry> superType;
 
-	FeatureType(Class<? extends IForgeRegistryEntry> superType) {
+	FeatureType(Class<? extends IForgeRegistry> superType) {
 		this.superType = superType;
 	}
 }
