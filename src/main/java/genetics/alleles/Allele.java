@@ -5,12 +5,12 @@ import com.google.common.base.MoreObjects;
 import java.util.Objects;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
-
 import genetics.api.alleles.AlleleInfo;
 import genetics.api.alleles.IAllele;
 import genetics.api.alleles.IAlleleType;
+
 
 public class Allele implements IAllele {
 
@@ -41,7 +41,7 @@ public class Allele implements IAllele {
 
 	@Override
 	public Component getDisplayName() {
-		return new TranslatableComponent(getLocalisationKey());
+		return Component.translatable(getLocalisationKey());
 	}
 
 	@Override

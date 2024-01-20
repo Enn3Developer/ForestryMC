@@ -17,6 +17,7 @@ import java.util.Set;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 
@@ -28,17 +29,17 @@ import genetics.api.individual.IGenome;
 
 public class MutationConditionBiome implements IMutationCondition {
 
-	private final Set<Biome.BiomeCategory> validBiomeTypes;
+	private final Set<ResourceKey<Biome>> validBiomeTypes;
 
-	public MutationConditionBiome(Biome.BiomeCategory... types) {
+	public MutationConditionBiome(ResourceKey<Biome>... types) {
 		this.validBiomeTypes = Set.of(types);
 	}
 
 	@Override
 	public float getChance(Level world, BlockPos pos, IAllele allele0, IAllele allele1, IGenome genome0, IGenome genome1, IClimateProvider climate) {
 		Biome biome = climate.getBiome();
-		Biome.BiomeCategory biomeCategory = biome.getBiomeCategory();
-		if (validBiomeTypes.contains(biomeCategory)) {
+		//ResourceKey<Biome> biomeCategory = biome.getBiome();   <--- debuggatamente disabilitato      :^)
+		if (validBiomeTypes.contains(biome)) {
 			return 1;
 		}
 
@@ -49,11 +50,11 @@ public class MutationConditionBiome implements IMutationCondition {
 	public Component getDescription() {
 		if (validBiomeTypes.size() > 1) {
 			String biomeTypes = Arrays.toString(validBiomeTypes.toArray()).toLowerCase(Locale.ENGLISH);
-			return new TranslatableComponent("for.mutation.condition.biome.multiple", biomeTypes);
+			return Component.translatable("for.mutation.condition.biome.multiple", biomeTypes);
 		} else {
-			Biome.BiomeCategory firstCategory = validBiomeTypes.iterator().next();
+			ResourceKey<Biome> firstCategory = validBiomeTypes.iterator().next();
 			String biomeType = firstCategory.toString().toLowerCase(Locale.ENGLISH);
-			return new TranslatableComponent("for.mutation.condition.biome.single", biomeType);
+			return Component.translatable("for.mutation.condition.biome.single", biomeType);
 		}
 	}
 }

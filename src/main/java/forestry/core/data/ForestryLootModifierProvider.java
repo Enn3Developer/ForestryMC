@@ -5,9 +5,9 @@ import java.util.Map;
 
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.level.storage.loot.predicates.AlternativeLootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
 import net.minecraft.resources.ResourceLocation;
 
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
@@ -34,7 +34,7 @@ public class ForestryLootModifierProvider extends GlobalLootModifierProvider {
 			add(mapEntry.getKey().getPath(), ConditionLootModifier.SERIALIZER, new ConditionLootModifier(mapEntry.getKey(), extensions));
 		}
 		add("grafter", GrafterLootModifier.SERIALIZER, new GrafterLootModifier(new LootItemCondition[]{
-				AlternativeLootItemCondition.alternative(
+				LootItemCondition.any_of(
 						MatchTool.toolMatches(ItemPredicate.Builder.item().of(ArboricultureItems.GRAFTER.item())),
 						MatchTool.toolMatches(ItemPredicate.Builder.item().of(ArboricultureItems.GRAFTER_PROVEN.item()))
 				).build()

@@ -9,7 +9,6 @@ import java.util.function.Function;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.Style;
 
 import forestry.api.genetics.EnumTolerance;

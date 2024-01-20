@@ -24,7 +24,7 @@ import net.minecraft.util.GsonHelper;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 
-import net.minecraftforge.registries.ForgeRegistryEntry;
+import net.minecraftforge.registries.ForgeRegistry;
 
 import forestry.api.recipes.ICentrifugeRecipe;
 
@@ -83,7 +83,7 @@ public class CentrifugeRecipe implements ICentrifugeRecipe {
 		return id;
 	}
 
-	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<CentrifugeRecipe> {
+	public static class Serializer extends ForgeRegistry<RecipeSerializer<?>> implements RecipeSerializer<CentrifugeRecipe> {
 
 		@Override
 		public CentrifugeRecipe fromJson(ResourceLocation recipeId, JsonObject json) {

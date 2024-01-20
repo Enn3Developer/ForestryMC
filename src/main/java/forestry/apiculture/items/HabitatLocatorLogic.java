@@ -23,12 +23,16 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import forestry.api.apiculture.genetics.IBee;
 import forestry.apiculture.network.packets.PacketHabitatBiomePointer;
 import forestry.core.utils.NetworkUtil;
+
+import static net.minecraft.world.level.Level.NETHER;
+import static net.minecraft.world.level.biome.Biomes.*;
 
 public class HabitatLocatorLogic {
 	private static final int maxChecksPerTick = 100;
@@ -45,7 +49,7 @@ public class HabitatLocatorLogic {
 		switch (event.getCategory()) {
 			case BEACH, RIVER, OCEAN -> waterBiomes.add(event.getName());
 			case NETHER -> netherBiomes.add(event.getName());
-			case THEEND -> endBiomes.add(event.getName());
+			case Biomes.THE_END -> endBiomes.add(event.getName());
 		}
 	}
 

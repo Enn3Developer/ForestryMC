@@ -11,9 +11,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.state.properties.Property;
 
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import forestry.api.core.IBlockProvider;
 import forestry.core.proxy.Proxies;
@@ -76,7 +75,7 @@ public interface IBlockFeature<B extends Block, I extends BlockItem> extends IIt
 
 	@Override
 	@SuppressWarnings("unchecked")
-	default <T extends IForgeRegistryEntry<T>> void register(RegistryEvent.Register<T> event) {
+	default <T extends IForgeRegistry<T>> void register(RegisterEvent.Registry<T> event) {
 		IItemFeature.super.register(event);
 		IForgeRegistry<T> registry = event.getRegistry();
 		Class<T> superType = registry.getRegistrySuperType();

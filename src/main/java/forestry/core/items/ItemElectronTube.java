@@ -14,6 +14,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 
 import javax.annotation.Nullable;
+import java.awt.*;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,9 +24,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.level.Level;
 
 import net.minecraftforge.api.distmarker.Dist;
@@ -61,7 +60,7 @@ public class ItemElectronTube extends ItemOverlay {
 			if (Screen.hasShiftDown()) {
 				for (ICircuitLayout circuitLayout : circuits.keys()) {
 					String circuitLayoutName = circuitLayout.getUsage();
-					list.add(new TextComponent(circuitLayoutName).withStyle(ChatFormatting.WHITE, ChatFormatting.UNDERLINE));
+					list.add(Component.translatable(circuitLayoutName).withStyle(ChatFormatting.WHITE, ChatFormatting.UNDERLINE));
 					for (ICircuit circuit : circuits.get(circuitLayout)) {
 						circuit.addTooltip(list);
 					}
@@ -71,7 +70,7 @@ public class ItemElectronTube extends ItemOverlay {
 			}
 		} else {
 			list.add(new TextComponent("<")
-					.append(new TranslatableComponent("for.gui.noeffect")
+					.append(Component.translatable("for.gui.noeffect")
 							.append(">").withStyle(ChatFormatting.GRAY)));
 		}
 	}

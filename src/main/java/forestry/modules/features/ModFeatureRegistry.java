@@ -47,6 +47,7 @@ import forestry.api.storage.IBackpackDefinition;
 import forestry.core.config.Constants;
 import forestry.modules.ForestryModuleUids;
 import forestry.storage.ModuleBackpacks;
+import net.minecraftforge.registries.RegisterEvent;
 
 //TODO: Sort Registries and Features
 public class ModFeatureRegistry {
@@ -207,7 +208,7 @@ public class ModFeatureRegistry {
 		}
 
 		@Override
-		public void addRegistryListener(FeatureType type, Consumer<RegistryEvent> listener) {
+		public void addRegistryListener(FeatureType type, Consumer<RegisterEvent> listener) {
 			registryListeners.put(type, listener);
 		}
 

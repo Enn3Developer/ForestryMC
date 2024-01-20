@@ -13,8 +13,6 @@ package forestry.core.gui.ledgers;
 import javax.annotation.Nullable;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 

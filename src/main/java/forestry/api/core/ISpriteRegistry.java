@@ -28,7 +28,7 @@ public interface ISpriteRegistry {
 	 * @param event Event that is used by forge to register textures to a atlas.
 	 * @return The created registry.
 	 */
-	static ISpriteRegistry fromEvent(TextureStitchEvent.Pre event) {
+	static ISpriteRegistry fromEvent(TextureStitchEvent.Post event) {
 		return event::addSprite;
 	}
 }
