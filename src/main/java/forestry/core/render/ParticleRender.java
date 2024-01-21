@@ -8,6 +8,7 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.ParticleStatus;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.Direction;
@@ -16,8 +17,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.core.Vec3i;
 import net.minecraft.world.level.Level;
-
-import com.mojang.math.Vector3f;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -39,6 +38,7 @@ import forestry.core.utils.VectUtil;
 import forestry.core.utils.WorldUtils;
 
 import genetics.api.individual.IGenome;
+import org.joml.Vector3f;
 
 //import forestry.core.entities.ParticleClimate;
 //import forestry.core.entities.ParticleHoneydust;
@@ -78,7 +78,7 @@ public class ParticleRender {
 		// At 32+ distance, have no bee particles. Make more particles up close.
 		BlockPos playerPosition = Minecraft.getInstance().player.blockPosition();
 		//TODO - correct?
-		double playerDistanceSq = playerPosition.distSqr(new Vec3i(particleStart.x, particleStart.y, particleStart.z));
+		double playerDistanceSq = playerPosition.distSqr(new Vec3i((int) particleStart.x, (int) particleStart.y, (int) particleStart.z));
 		if (world.random.nextInt(1024) < playerDistanceSq) {
 			return;
 		}
@@ -108,7 +108,7 @@ public class ParticleRender {
 		} else {
 			Vec3i area = AlleleEffect.getModifiedArea(genome, housing);
 			Vec3i offset = housing.getCoordinates().offset(-area.getX() / 2, -area.getY() / 4, -area.getZ() / 2);
-			BlockPos destination = VectUtil.getRandomPositionInArea(world.random, area).offset(offset);
+			BlockPos destination = VectUtil.getRandomPositionInArea((Random) world.random, area).offset(offset);
 			world.addParticle(new BeeParticleData(ApicultureParticles.BEE_EXPLORER_PARTICLE, destination, color), particleStart.x, particleStart.y, particleStart.z, 0, 0, 0);
 			//Particle particle = new ParticleBeeExplore(world, particleStart, destination, color);
 			//effectRenderer.add(particle);
@@ -130,7 +130,7 @@ public class ParticleRender {
 		}
 		if (rand.nextFloat() >= 0.75F) {
 			for (int i = 0; i < 3; i++) {
-				Direction facing = Direction.Plane.HORIZONTAL.getRandomDirection(rand);
+				Direction facing = Direction.Plane.HORIZONTAL.getRandomDirection((RandomSource) rand);
 				int xOffset = facing.getStepX();
 				int zOffset = facing.getStepZ();
 				double x = pos.getX() + 0.5 + (xOffset * 8 + ((1 - Mth.abs(xOffset)) * (0.5 - rand.nextFloat()) * 8)) / 16.0;
@@ -161,7 +161,7 @@ public class ParticleRender {
 		}
 		if (rand.nextFloat() >= 0.65F) {
 			for (int i = 0; i < 3; i++) {
-				Direction facing = Direction.Plane.HORIZONTAL.getRandomDirection(rand);
+				Direction facing = Direction.Plane.HORIZONTAL.getRandomDirection((RandomSource) rand);
 				int xOffset = facing.getStepX();
 				int zOffset = facing.getStepZ();
 				double x = pos.getX() + 0.5 + (xOffset * 8 + ((1 - Mth.abs(xOffset)) * (0.5 - rand.nextFloat()) * 8)) / 16.0;

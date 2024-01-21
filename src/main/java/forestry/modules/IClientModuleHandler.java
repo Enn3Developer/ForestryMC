@@ -1,8 +1,6 @@
 package forestry.modules;
 
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.ModelBakeEvent;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;

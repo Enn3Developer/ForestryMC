@@ -13,7 +13,7 @@ package forestry.core.genetics.mutations;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.world.level.Level;
 
 import genetics.api.alleles.IAllele;
@@ -54,7 +54,7 @@ public class MutationConditionTemperature implements IMutationCondition {
 			String maxString = AlleleManager.climateHelper.toDisplay(maxTemperature).getString();
 			return new TextComponent(Translator.translateToLocal("for.mutation.condition.temperature.range").replace("%LOW", minString).replace("%HIGH", maxString));
 		} else {
-			return new TranslatableComponent("for.mutation.condition.temperature.single", minString);
+			return Component.translatable("for.mutation.condition.temperature.single", minString);
 		}
 	}
 }

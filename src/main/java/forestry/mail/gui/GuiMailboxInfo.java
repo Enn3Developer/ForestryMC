@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
@@ -32,7 +32,7 @@ import forestry.core.render.ForestryResource;
 import forestry.core.utils.SoundUtil;
 import forestry.mail.POBoxInfo;
 
-public class GuiMailboxInfo extends GuiComponent {
+public class GuiMailboxInfo extends GuiGraphics {
 
 	public enum XPosition {
 		LEFT, RIGHT

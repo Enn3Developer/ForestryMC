@@ -13,7 +13,7 @@ package forestry.core.genetics.mutations;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.world.level.Level;
 
 import genetics.api.alleles.IAllele;
@@ -54,7 +54,7 @@ public class MutationConditionHumidity implements IMutationCondition {
 			//TODO: REPLACE
 			return new TextComponent(Translator.translateToLocal("for.mutation.condition.humidity.range").replace("%LOW", minHumidityString).replace("%HIGH", maxHumidityString));
 		} else {
-			return new TranslatableComponent("for.mutation.condition.humidity.single", minHumidityString);
+			return Component.translatable("for.mutation.condition.humidity.single", minHumidityString);
 		}
 	}
 }

@@ -32,9 +32,11 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -82,12 +84,8 @@ public class BlockBase<P extends Enum<P> & IBlockType> extends BlockForestry imp
 		this.hasTESR = blockType instanceof IBlockTypeTesr;
 	}
 
-	public BlockBase(P blockType, Material material) {
-		this(blockType, Block.Properties.of(material));
-	}
-
 	public BlockBase(P blockType) {
-		this(blockType, Material.METAL);
+		this(blockType, BlockBehaviour.Properties.of().mapColor(MapColor.METAL));
 	}
 
 	@Override

@@ -2,7 +2,6 @@ package forestry.core.render;
 
 import forestry.core.items.ItemBlockBase;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
-import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.common.util.NonNullLazy;
 
 public class RenderForestryItemProperties implements IItemRenderProperties {

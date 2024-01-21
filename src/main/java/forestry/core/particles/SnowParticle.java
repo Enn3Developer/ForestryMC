@@ -18,14 +18,15 @@ import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.util.Mth;
-import com.mojang.math.Quaternion;
 import net.minecraft.world.phys.Vec3;
-import com.mojang.math.Vector3f;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.joml.Quaterniond;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class SnowParticle extends TextureSheetParticle {
 	public SnowParticle(ClientLevel world, double x, double y, double z) {
@@ -66,11 +67,11 @@ public class SnowParticle extends TextureSheetParticle {
 		float f = (float) (Mth.lerp((double) partialTicks, this.xo, this.x) - vector3d.x());
 		float f1 = (float) (Mth.lerp((double) partialTicks, this.yo, this.y) - vector3d.y());
 		float f2 = (float) (Mth.lerp((double) partialTicks, this.zo, this.z) - vector3d.z());
-		Quaternion quaternion;
+		Quaternionf quaternion;
 		if (this.roll == 0.0F) {
 			quaternion = activeRenderInfo.rotation();
 		} else {
-			quaternion = new Quaternion(activeRenderInfo.rotation());
+			quaternion = new Quaternionf(activeRenderInfo.rotation());
 			float f3 = Mth.lerp(partialTicks, this.oRoll, this.roll);
 			quaternion.mul(Vector3f.ZP.rotation(f3));
 		}

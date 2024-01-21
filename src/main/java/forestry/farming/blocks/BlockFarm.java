@@ -26,7 +26,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 
 import forestry.core.blocks.BlockStructure;
 import forestry.farming.tiles.TileFarmControl;
@@ -52,7 +53,7 @@ public class BlockFarm extends BlockStructure implements EntityBlock {
 	}
 
 	public BlockFarm(EnumFarmBlockType type, EnumFarmMaterial farmMaterial) {
-		super(Block.Properties.of(Material.STONE).strength(1.0f));
+		super(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(1.0f));
 		this.type = type;
 		this.farmMaterial = farmMaterial;
 		registerDefaultState(this.getStateDefinition().any().setValue(STATE, State.PLAIN));

@@ -12,8 +12,8 @@ package forestry.core.entities;
 
 //import net.minecraft.block.BlockLiquid;
 
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -80,9 +80,9 @@ public class ParticleColoredDripParticle extends TextureSheetParticle {
 			this.zd *= 0.699999988079071D;
 		}
 
-		BlockPos blockpos = new BlockPos(this.x, this.y, this.z);
-		BlockState BlockState = this.level.getBlockState(blockpos);
-		Material material = BlockState.getMaterial();
+		BlockPos blockpos = new BlockPos((int) this.x, (int) this.y, (int) this.z);
+		BlockState blockState = this.level.getBlockState(blockpos);
+		Material material = blockState.getMaterial();
 
 		if (material.isLiquid() || material.isSolid()) {
 			double d0 = 0.0D;

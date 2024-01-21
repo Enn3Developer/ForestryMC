@@ -37,7 +37,7 @@ public class ErrorLedger extends Ledger {
 		this.state = state;
 		if (state != null) {
 			//TODO - textcomponent
-			int lineHeight = StringUtil.getLineHeight(maxTextWidth, getTooltip(), new TranslatableComponent(state.getUnlocalizedHelp()));
+			int lineHeight = StringUtil.getLineHeight(maxTextWidth, getTooltip(), Component.translatable(state.getUnlocalizedHelp()));
 			maxHeight = lineHeight + 20;
 		}
 	}
@@ -81,7 +81,7 @@ public class ErrorLedger extends Ledger {
 		if (state == null) {
 			return new TextComponent("");
 		}
-		return new TranslatableComponent(state.getUnlocalizedDescription());
+		return Component.translatable(state.getUnlocalizedDescription());
 	}
 
 }

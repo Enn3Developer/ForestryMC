@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -86,6 +86,6 @@ public class FarmLedger extends Ledger {
 	public Component getTooltip() {
 		float hydrationModifier = delegate.getHydrationModifier();
 		return new TextComponent(StringUtil.floatAsPercent(hydrationModifier) + ' ')
-			.append(new TranslatableComponent("for.gui.hydration"));
+			.append(Component.translatable("for.gui.hydration"));
 	}
 }

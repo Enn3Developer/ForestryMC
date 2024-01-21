@@ -10,12 +10,13 @@
  ******************************************************************************/
 package forestry.arboriculture.blocks;
 
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 
 import forestry.core.blocks.BlockBase;
 
 public class BlockArboriculture extends BlockBase<BlockTypeArboricultureTesr> {
 	public BlockArboriculture(BlockTypeArboricultureTesr type) {
-		super(type, Properties.of(Material.WOOD));
+		super(type, Properties.of().mapColor(MapColor.WOOD).ignitedByLava().instrument(NoteBlockInstrument.BASS));
 	}
 }

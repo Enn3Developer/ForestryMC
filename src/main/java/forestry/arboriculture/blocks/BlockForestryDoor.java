@@ -13,7 +13,9 @@ package forestry.arboriculture.blocks;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 
 import forestry.api.arboriculture.EnumForestryWoodType;
 import forestry.api.arboriculture.IWoodType;
@@ -25,10 +27,10 @@ public class BlockForestryDoor extends DoorBlock implements IWoodTyped {
 	private final EnumForestryWoodType woodType;
 
 	public BlockForestryDoor(EnumForestryWoodType woodType) {
-		super(Block.Properties.of(Material.WOOD)
+		super(Block.Properties.of().mapColor(MapColor.WOOD).ignitedByLava().instrument(NoteBlockInstrument.BASS)
 				.strength(woodType.getHardness(), woodType.getHardness() * 1.5F)
 				.sound(SoundType.WOOD)
-				.noOcclusion());
+				.noOcclusion(), BlockSetType.CHERRY);
 		this.woodType = woodType;
 	}
 

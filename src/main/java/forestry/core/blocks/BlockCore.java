@@ -11,10 +11,11 @@
 package forestry.core.blocks;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 
 public class BlockCore extends BlockBase<BlockTypeCoreTesr> {
 	public BlockCore(BlockTypeCoreTesr blockType) {
-		super(blockType, Block.Properties.of(Material.WOOD));
+		super(blockType, Block.Properties.of().mapColor(MapColor.WOOD).ignitedByLava().instrument(NoteBlockInstrument.BASS));
 	}
 }

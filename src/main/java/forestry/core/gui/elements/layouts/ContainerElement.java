@@ -217,7 +217,7 @@ public class ContainerElement extends GuiElement {
 	}
 
 	public LabelElement translated(String key, Object... args) {
-		return label(new TranslatableComponent(key, args));
+		return label(Component.translatable(key, args));
 	}
 
 	public LabelElement.Builder labelLine(MutableComponent component) {
@@ -225,7 +225,7 @@ public class ContainerElement extends GuiElement {
 	}
 
 	public LabelElement.Builder translatedLine(String key, Object... args) {
-		return labelLine(new TranslatableComponent(key, args));
+		return labelLine(Component.translatable(key, args));
 	}
 
 	public LabelElement.Builder labelLine(String text) {

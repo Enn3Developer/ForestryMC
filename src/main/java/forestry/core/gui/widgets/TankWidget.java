@@ -13,6 +13,7 @@ package forestry.core.gui.widgets;
 import javax.annotation.Nullable;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.resources.ResourceLocation;
@@ -29,10 +30,12 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
-
+import org.joml.Matrix4f;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraftforge.common.extensions.IForgeFluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 
@@ -92,7 +95,8 @@ public class TankWidget extends Widget {
 			Fluid fluid = contents.getFluid();
 
 			if (fluid != null) {
-				ResourceLocation fluidStill = fluid.getAttributes().getStillTexture(contents);
+				IClientFluidTypeExtensions extensions = IClientFluidTypeExtensions.of(fluid);
+				ResourceLocation fluidStill = extensions.getStillTexture(contents);
 				TextureAtlasSprite fluidStillSprite = null;
 				if (fluidStill != null) {
 					fluidStillSprite = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(fluidStill);
@@ -101,7 +105,7 @@ public class TankWidget extends Widget {
 					fluidStillSprite = ResourceUtil.getMissingTexture();
 				}
 
-				int fluidColor = fluid.getAttributes().getColor(contents);
+				int fluidColor = extensions.getTintColor(contents);
 
 				int scaledAmount = contents.getAmount() * height / tank.getCapacity();
 				if (contents.getAmount() > 0 && scaledAmount < 1) {
