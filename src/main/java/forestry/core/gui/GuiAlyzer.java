@@ -26,7 +26,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -70,7 +69,7 @@ public class GuiAlyzer extends GuiForestry<ContainerAlyzer> {
 	private final ItemInventoryAlyzer itemInventory;
 
 	public GuiAlyzer(ContainerAlyzer container, Inventory playerInv, Component name) {
-		super(Constants.TEXTURE_PATH_GUI + "/portablealyzer.png", container, playerInv, new TextComponent("GUI_ALYZER_TEST_TITLE"));
+		super(Constants.TEXTURE_PATH_GUI + "/portablealyzer.png", container, playerInv, Component.translatable("GUI_ALYZER_TEST_TITLE"));
 
 		this.itemInventory = container.inventory;
 		this.imageWidth = 246;

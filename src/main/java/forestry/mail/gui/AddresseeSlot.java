@@ -10,7 +10,6 @@
  ******************************************************************************/
 package forestry.mail.gui;
 
-import net.minecraft.client.gui.GuiComponent;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;

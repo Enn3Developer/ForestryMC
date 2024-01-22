@@ -34,8 +34,8 @@ public class Translator {
 	 *
 	 * @return The optional component if it can be translated the other component otherwise.
 	 */
-	private static Component tryTranslate(Supplier<TranslatableComponent> optionalKey, Supplier<Component> defaultKey) {
-		TranslatableComponent component = optionalKey.get();
+	private static Component tryTranslate(Supplier<Component> optionalKey, Supplier<Component> defaultKey) {
+		Component component = optionalKey.get();
 		if (canTranslate(component)) {
 			return component;
 		} else {
@@ -43,7 +43,7 @@ public class Translator {
 		}
 	}
 
-	public static boolean canTranslate(TranslatableComponent component) {
+	public static boolean canTranslate(Component component) {
 		String translatedText = component.getString();
 		return !translatedText.startsWith(component.getKey());
 	}

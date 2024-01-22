@@ -26,7 +26,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.core.NonNullList;
 import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.ChatFormatting;
 
 import net.minecraft.world.level.Level;
@@ -104,7 +103,7 @@ public class ItemLetter extends ItemWithGui {
 
 		CompoundTag compoundNBT = itemstack.getTag();
 		if (compoundNBT == null) {
-			list.add(new TextComponent("<")
+			list.add(Component.translatable("<")
 					.append(Component.translatable("for.gui.blank").append(">"))
 					.withStyle(ChatFormatting.GRAY));
 			return;
