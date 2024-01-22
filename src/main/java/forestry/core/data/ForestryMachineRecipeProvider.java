@@ -28,7 +28,6 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 
 import forestry.api.arboriculture.EnumForestryWoodType;

@@ -12,7 +12,6 @@ package forestry.core.genetics.mutations;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 
 import net.minecraft.world.level.Level;
 
@@ -52,7 +51,7 @@ public class MutationConditionTemperature implements IMutationCondition {
 
 		if (minTemperature != maxTemperature) {
 			String maxString = AlleleManager.climateHelper.toDisplay(maxTemperature).getString();
-			return new TextComponent(Translator.translateToLocal("for.mutation.condition.temperature.range").replace("%LOW", minString).replace("%HIGH", maxString));
+			return Component.translatable(Translator.translateToLocal("for.mutation.condition.temperature.range").replace("%LOW", minString).replace("%HIGH", maxString));
 		} else {
 			return Component.translatable("for.mutation.condition.temperature.single", minString);
 		}

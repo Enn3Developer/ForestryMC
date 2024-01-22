@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -43,7 +43,7 @@ public class GuiBetterButton extends Button implements IToolTipProvider {
 	}
 
 	public GuiBetterButton(int x, int y, IButtonTextureSet texture, OnPress handler) {
-		super(x, y, texture.getWidth(), texture.getHeight(), TextComponent.EMPTY, handler);
+		super(x, y, texture.getWidth(), texture.getHeight(), Component.translatable().EMPTY, handler);
 		this.texture = texture;
 		useTexWidth = true;
 	}
@@ -68,7 +68,7 @@ public class GuiBetterButton extends Button implements IToolTipProvider {
 	}
 
 	public GuiBetterButton setLabel(String label) {
-		this.setMessage(new TextComponent(label));
+		this.setMessage(Component.translatable(label));
 		return this;
 	}
 

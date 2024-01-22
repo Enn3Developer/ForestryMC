@@ -19,7 +19,6 @@ import net.minecraft.util.GsonHelper;
 import net.minecraft.resources.ResourceLocation;
 
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import forestry.api.recipes.IHygroregulatorRecipe;
 import forestry.factory.recipes.RecipeSerializers;

@@ -15,8 +15,11 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 
 import forestry.core.gui.ContainerDummy;
 import forestry.worktable.gui.ContainerWorktable;
+import net.minecraft.world.item.ItemStack;
 
-public class CraftingInventoryForestry extends CraftingContainer {
+import static jdk.internal.org.jline.reader.impl.LineReaderImpl.CompletionType.List;
+
+public class CraftingInventoryForestry implements CraftingContainer {
 	private final AbstractContainerMenu eventHandlerIn;
 
 	public CraftingInventoryForestry(ContainerWorktable containerWorktable) {
@@ -28,12 +31,12 @@ public class CraftingInventoryForestry extends CraftingContainer {
 	}
 
 	private CraftingInventoryForestry(AbstractContainerMenu eventHandlerIn, int width, int height) {
-		super(eventHandlerIn, width, height);
+		super();
 		this.eventHandlerIn = eventHandlerIn;
 	}
 
 	public CraftingInventoryForestry copy() {
-		CraftingInventoryForestry copy = new CraftingInventoryForestry(this.eventHandlerIn, getWidth(), getHeight());
+		CraftingInventoryForestry copy = new CraftingInventoryForestry(this.eventHandlerIn, getWidth(), getHeight(), List<ItemStack> getItems());
 		for (int slot = 0; slot < getContainerSize(); slot++) {
 			copy.setItem(slot, getItem(slot).copy());
 		}

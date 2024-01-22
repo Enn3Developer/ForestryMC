@@ -6,8 +6,6 @@ import java.util.function.Predicate;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.network.chat.TextComponent;
-
 import com.mojang.blaze3d.vertex.PoseStack;
 
 public class TextEditElement extends GuiElement implements IValueElement<String> {
