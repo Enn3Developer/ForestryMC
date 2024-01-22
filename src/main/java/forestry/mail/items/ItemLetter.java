@@ -28,7 +28,7 @@ import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.world.level.Level;
 
 import net.minecraftforge.api.distmarker.Dist;
@@ -92,7 +92,7 @@ public class ItemLetter extends ItemWithGui {
 		if (heldItem.getCount() == 1) {
 			return super.use(worldIn, playerIn, handIn);
 		} else {
-			playerIn.sendMessage(new TranslatableComponent("for.chat.mail.wrongstacksize"), Util.NIL_UUID);
+			playerIn.sendMessage(Component.translatable("for.chat.mail.wrongstacksize"), Util.NIL_UUID);
 			return InteractionResultHolder.fail(heldItem);
 		}
 	}
@@ -105,7 +105,7 @@ public class ItemLetter extends ItemWithGui {
 		CompoundTag compoundNBT = itemstack.getTag();
 		if (compoundNBT == null) {
 			list.add(new TextComponent("<")
-					.append(new TranslatableComponent("for.gui.blank").append(">"))
+					.append(Component.translatable("for.gui.blank").append(">"))
 					.withStyle(ChatFormatting.GRAY));
 			return;
 		}

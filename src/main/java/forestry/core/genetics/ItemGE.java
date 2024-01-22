@@ -87,10 +87,10 @@ public abstract class ItemGE extends ItemForestry {
 					individual.addTooltip(list);
 				}
 			} else {
-				list.add(new TranslatableComponent("for.gui.tooltip.tmi", "< %s >").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
+				list.add(Component.translatable("for.gui.tooltip.tmi", "< %s >").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
 			}
 		} else {
-			list.add(new TranslatableComponent("for.gui.unknown", "< %s >").withStyle(ChatFormatting.GRAY));
+			list.add(Component.translatable("for.gui.unknown", "< %s >").withStyle(ChatFormatting.GRAY));
 		}
 	}
 

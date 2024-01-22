@@ -22,20 +22,21 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.fluids.FluidAttributes;
 
 import java.awt.Color;
 import java.util.EnumMap;
 import java.util.Locale;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.math.Vector3f;
 
 import forestry.core.blocks.BlockBase;
 import forestry.core.config.Constants;
 import forestry.core.fluids.ForestryFluids;
 import forestry.core.tiles.IRenderableTile;
 import forestry.core.tiles.TileBase;
+import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraftforge.fluids.FluidType;
+import org.joml.Vector3f;
 
 public class RenderMachine implements IForestryRenderer<TileBase> {
 	public static final ModelLayerLocation MODEL_LAYER = IForestryRenderer.register("machine");
@@ -148,8 +149,8 @@ public class RenderMachine implements IForestryRenderer<TileBase> {
 			return;
 		}
 
-		FluidAttributes attributes = renderInfo.getFluidStack().getFluid().getAttributes();
-		int color = attributes.getColor();
+		IClientFluidTypeExtensions extensions = IClientFluidTypeExtensions.of(renderInfo.getFluidStack().getFluid());
+		int color = extensions.getTintColor();
 		ForestryFluids definition = ForestryFluids.getFluidDefinition(renderInfo.getFluidStack().getFluid());
 		if (color < 0) {
 			color = Color.BLUE.getRGB();

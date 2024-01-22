@@ -33,14 +33,14 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.world.level.Level;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.FluidActionResult;
-import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -79,7 +79,7 @@ public class ItemFluidContainerForestry extends ItemForestry {
 				}
 				ItemStack itemStack = new ItemStack(this);
 				IFluidHandlerItem fluidHandler = new FluidHandlerItemForestry(itemStack, type);
-				if (fluidHandler.fill(new FluidStack(fluid, FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE) == FluidAttributes.BUCKET_VOLUME) {
+				if (fluidHandler.fill(new FluidStack(fluid, FluidType.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE) == FluidAttributes.BUCKET_VOLUME) {
 					ItemStack filled = fluidHandler.getContainer();
 					subItems.add(filled);
 				}
@@ -109,11 +109,11 @@ public class ItemFluidContainerForestry extends ItemForestry {
 				String exactTranslationKey = Constants.TRANSLATION_KEY_ITEM + type.getSerializedName() + '.' + fluid.getFluid().getRegistryName();
 				return Translator.tryTranslate(exactTranslationKey, () -> {
 							String grammarKey = Constants.TRANSLATION_KEY_ITEM + type.getSerializedName() + ".grammar";
-							return new TranslatableComponent(grammarKey, fluid.getDisplayName());
+							return Component.translatable(grammarKey, fluid.getDisplayName());
 						});
 			} else {
 				String unlocalizedname = Constants.TRANSLATION_KEY_ITEM + type.getSerializedName() + ".empty";
-				return new TranslatableComponent(unlocalizedname);
+				return Component.translatable(unlocalizedname);
 			}
 		}
 		return super.getName(stack);

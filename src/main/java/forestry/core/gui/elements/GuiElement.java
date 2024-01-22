@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -25,7 +26,7 @@ import forestry.api.core.tooltips.ToolTip;
 import forestry.core.gui.elements.layouts.ContainerElement;
 
 @OnlyIn(Dist.CLIENT)
-public abstract class GuiElement extends GuiComponent {
+public abstract class GuiElement extends GuiGraphics {
 	public static final int UNKNOWN_HEIGHT = -1;
 	public static final int UNKNOWN_WIDTH = -1;
 	public static final Dimension UNKNOWN_SIZE = new Dimension(-1, -1);
@@ -80,7 +81,7 @@ public abstract class GuiElement extends GuiComponent {
 	}
 
 	protected GuiElement() {
-		actionConfig = buildActions(ActionConfig.selfBuilder()).create();
+        actionConfig = buildActions(ActionConfig.selfBuilder()).create();
 	}
 
 	protected GuiElement(ElementBuilder<?, ?> builder) {

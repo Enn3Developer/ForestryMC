@@ -26,8 +26,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.world.level.Level;
 
 import com.mojang.authlib.GameProfile;
@@ -77,7 +76,7 @@ public abstract class BlockStructure extends BlockForestry {
 					}
 				}
 			} else {
-				playerIn.sendMessage(new TranslatableComponent("for.multiblock.error.notConnected"), Util.NIL_UUID);
+				playerIn.sendMessage(Component.translatable("for.multiblock.error.notConnected"), Util.NIL_UUID);
 				return InteractionResult.SUCCESS;
 			}
 		}

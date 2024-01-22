@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.function.UnaryOperator;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.material.Fluid;
@@ -16,7 +16,8 @@ import net.minecraft.world.level.material.Fluid;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -44,20 +45,20 @@ public class FluidComponent implements ICustomComponent {
 	public void render(PoseStack ms, IComponentRenderContext context, float pticks, int mouseX, int mouseY) {
 		ms.pushPose();
 		Fluid _fluid = fluidStack.getFluid();
-		FluidAttributes fluidAttributes = _fluid.getAttributes();
-		ResourceLocation fluidStill = fluidAttributes.getStillTexture(fluidStack);
+		IClientFluidTypeExtensions extensions = IClientFluidTypeExtensions.of(_fluid);
+		ResourceLocation fluidStill = extensions.getStillTexture(fluidStack);
 		TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(fluidStill);
-		ResourceLocation spriteLocation = sprite.getName();
+		ResourceLocation spriteLocation = sprite.atlasLocation();
 		RenderSystem.setShaderTexture(0, new ResourceLocation(spriteLocation.getNamespace(), "textures/" + spriteLocation.getPath() + ".png"));
-		setGLColorFromInt(fluidAttributes.getColor(fluidStack));
+		setGLColorFromInt(extensions.getTintColor(fluidStack));
 
 		// MatrixStack transform, int x, int y, float u, float v, int width, int height, int ?, int ?
 		GuiComponent.blit(ms, x, (int) (y + h - Math.floor(h * ((float) level / maxLevel))), sprite.getU0(), sprite.getV0(), w, h * level / maxLevel, 8, 8);
 
 		if (context.isAreaHovered(mouseX, mouseY, x, y, w, h)) {
 			List<Component> toolTips = new ArrayList<>();
-			toolTips.add(new TranslatableComponent(fluidAttributes.getTranslationKey(fluidStack)));
-			TranslatableComponent liquidAmount = new TranslatableComponent("for.gui.tooltip.liquid.amount", level, maxLevel);
+			toolTips.add(Component.translatable(fluidStack.getTranslationKey()));
+			MutableComponent liquidAmount = Component.translatable("for.gui.tooltip.liquid.amount", level, maxLevel);
 			toolTips.add(liquidAmount);
 
 			context.setHoverTooltipComponents(toolTips);

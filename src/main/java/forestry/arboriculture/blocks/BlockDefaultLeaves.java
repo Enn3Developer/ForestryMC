@@ -6,8 +6,9 @@ import java.util.List;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.BlockPos;
@@ -36,7 +37,7 @@ public class BlockDefaultLeaves extends BlockAbstractLeaves {
 	private final TreeDefinition definition;
 
 	public BlockDefaultLeaves(TreeDefinition definition) {
-		super(Block.Properties.of(Material.LEAVES)
+		super(Block.Properties.of().mapColor(MapColor.PLANT).ignitedByLava().pushReaction(PushReaction.DESTROY)
 				.strength(0.2f)
 				.sound(SoundType.GRASS)
 				.randomTicks()

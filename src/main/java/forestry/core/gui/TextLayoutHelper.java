@@ -84,7 +84,7 @@ public class TextLayoutHelper {
 	}
 
 	public void drawTranslatedLine(PoseStack transform, String key, int x) {
-		drawLine(transform, new TranslatableComponent(key), x, defaultFontColor);
+		drawLine(transform, Component.translatable(key), x, defaultFontColor);
 	}
 
 	public void drawSplitLine(String text, int x, int maxWidth) {

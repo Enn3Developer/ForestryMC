@@ -15,7 +15,6 @@ import net.minecraft.world.level.Level;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.model.data.IModelData;
 
 @OnlyIn(Dist.CLIENT)
 public abstract class ModelBlockCached<B extends Block, K> extends ModelBlockDefault<B, K> {

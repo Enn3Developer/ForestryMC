@@ -14,7 +14,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.resources.ResourceLocation;
 
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 

@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 
@@ -18,7 +18,7 @@ public class BlockHoneyComb extends Block implements IColoredBlock {
 	public final EnumHoneyComb type;
 
 	public BlockHoneyComb(EnumHoneyComb type) {
-		super(Block.Properties.of(Material.WOOL)
+		super(Block.Properties.of().mapColor(MapColor.WOOL).ignitedByLava()
 				.strength(1F));
 		this.type = type;
 	}

@@ -11,12 +11,13 @@
 package forestry.apiculture.blocks;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 
 import forestry.core.blocks.BlockBase;
 
 public class BlockApiculture extends BlockBase<BlockTypeApiculture> {
 	public BlockApiculture(BlockTypeApiculture type) {
-		super(type, Block.Properties.of(Material.WOOD));
+		super(type, Block.Properties.of().mapColor(MapColor.WOOD).ignitedByLava().instrument(NoteBlockInstrument.BASS));
 	}
 }

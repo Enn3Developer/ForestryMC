@@ -38,7 +38,6 @@ import net.minecraft.world.level.BlockAndTintGetter;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.ModelBakeEvent;
 
 import forestry.core.blocks.IColoredBlock;
 import forestry.core.items.definitions.IColoredItem;

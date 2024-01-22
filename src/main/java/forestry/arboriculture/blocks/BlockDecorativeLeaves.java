@@ -5,10 +5,11 @@ import javax.annotation.Nullable;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -36,7 +37,7 @@ public class BlockDecorativeLeaves extends Block implements IColoredBlock, IForg
 	private TreeDefinition definition;
 
 	public BlockDecorativeLeaves(TreeDefinition definition) {
-		super(Properties.of(Material.LEAVES)
+		super(Properties.of().mapColor(MapColor.PLANT).ignitedByLava().pushReaction(PushReaction.DESTROY)
 				.strength(0.2f)
 				.sound(SoundType.GRASS)
 				.noOcclusion()

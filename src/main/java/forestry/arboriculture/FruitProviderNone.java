@@ -19,7 +19,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.BaseComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
@@ -128,7 +128,7 @@ public class FruitProviderNone implements IFruitProvider {
 
 	@Override
 	public BaseComponent getDescription() {
-		return new TranslatableComponent(unlocalizedDescription);
+		return Component.translatable(unlocalizedDescription);
 	}
 
 	@Override

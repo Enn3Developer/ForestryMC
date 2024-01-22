@@ -28,7 +28,6 @@ import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import net.minecraftforge.fml.common.Mod;

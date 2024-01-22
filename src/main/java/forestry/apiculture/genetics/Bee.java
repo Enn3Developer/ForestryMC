@@ -29,7 +29,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
+
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 
@@ -378,7 +378,7 @@ public class Bee extends IndividualLiving implements IBee {
 
 		IAllele speedAllele = genome.getActiveAllele(BeeChromosomes.SPEED);
 
-		TranslatableComponent customSpeed = new TranslatableComponent("for.tooltip.worker." + speedAllele.getLocalisationKey().replaceAll("(.*)\\.", ""));
+		TranslatableComponent customSpeed = Component.translatable("for.tooltip.worker." + speedAllele.getLocalisationKey().replaceAll("(.*)\\.", ""));
 		if (Translator.canTranslate(customSpeed)) {
 			toolTip.singleLine()
 				.add(customSpeed)
